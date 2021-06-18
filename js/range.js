@@ -1,10 +1,16 @@
 (() => {
 
+    document.querySelector('#depositRangeInput').addEventListener('input',function(){
+        this.value = this.value.replace(/,/g,'').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    });
+
+      
     //slide 1  rate select slider 
     const rateSlider = document.getElementById('rangeSlider');
     const verticalTextSlider = document.querySelector('.value-vertical-slider ul'); 
     const sliderInput = document.querySelector('#example_1_input');
     const ht = 33; 
+    const visual = document.querySelector('.range-visual-images'); 
     
     noUiSlider.create(rateSlider, {
         
@@ -22,13 +28,15 @@
     });
 
     for(let i =0; i < 11; i++) {
-        verticalTextSlider.innerHTML += `<li> ${i * 10} </li>`
+        verticalTextSlider.innerHTML += `<li> ${i * 10} </li>`;
     }
     
     rateSlider.noUiSlider.on('update', function(values, handle) {
         setTimeout(() => {
             verticalTextSlider.style.marginTop = `-${(values[handle] / 10 ) * ht}px`;
+            
         }, 300);
+        
         sliderInput.value = parseInt(values[handle]);
         this.start = values[handle]
         //console.log('current value', parseInt(values[handle]));
@@ -36,13 +44,14 @@
 
     sliderInput.addEventListener('change', () => { 
         rateSlider.noUiSlider.updateOptions({
-            start :  this.value
+            start :  sliderInput.value
         });
     });
 
     //slide 2 deposit amount 
     const depositSlider = document.querySelector('#depositRangeSlider'); 
-
+    let temp = 0; 
+    let tempInput = document.querySelector('#depositRangeInput'); 
     noUiSlider.create(depositSlider, {
         connect: [true, false],
         start: 5000000,
@@ -62,7 +71,9 @@
         sliderPip[0].innerHTML ='₱0' ;
         sliderPip[1].innerHTML ='₱100M' ;
         
-        this.start = values[handle]
+        this.start = values[handle]; 
+        temp  = values[handle];
+        tempInput.value = temp.replace(/,/g,'').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     });
     
 
@@ -113,4 +124,6 @@
         console.log( `period : ${period}days(yrs)`); 
     });
 })();
+
+
 

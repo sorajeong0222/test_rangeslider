@@ -1,6 +1,13 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
+    background: #666;
+}
+
+
+em,
+i {
+    font-style: normal;
 }
 
 * {
@@ -15,22 +22,34 @@ li {
     list-style: none;
 }
 
+img {
+    max-width: 100%;
+}
+
+//animation
+@keyframes fadeUp {
+    0% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
 
 .custom-select {
     position: relative;
     color: #333;
+
     select {
         display: none;
     }
 }
 
-
 .select-selected {
-    //border: 1px solid #ddd;
     border-radius: 10px;
 }
 
-/*style the arrow inside the select element:*/
 .select-selected:after {
     position: absolute;
     content: '';
@@ -41,10 +60,8 @@ li {
     height: 10px;
     transform: rotate(90deg);
     transform-origin: center;
-
 }
 
-/*style the items (options), including the selected item:*/
 .select-items div,
 .select-selected {
     color: #333;
@@ -54,10 +71,8 @@ li {
     background: #fff;
 }
 
-/*style items (options):*/
 .select-items {
     position: absolute;
-    //background-color: DodgerBlue;
     top: 35px;
     left: 0;
     right: 0;
@@ -68,7 +83,6 @@ li {
     overflow: hidden;
 }
 
-/*hide the items when the select box is closed:*/
 .select-hide {
     display: none;
 }
@@ -78,32 +92,47 @@ li {
     background: #ccc;
 }
 
+.bullets {
+    font-size: 12px;
 
-body {
-    background: #666;
-}
+    li {
+        position: relative;
+        padding-left: 10px;
 
-i {
-    font-style: normal;
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 4px;
+            height: 4px;
+            background: #ffd651;
+            border-radius: 50%;
+
+        }
+
+        &:not(:first-child) {
+            margin-top: 5px
+        }
+
+        &.invest::before {
+            background: rgba($color: #fff, $alpha: 0.5)
+        }
+    }
 }
 
 .figure {
     max-width: 360px;
-    
     border-radius: 20px;
     margin: 1em;
-    margin-left: auto; margin-right: auto ;
+    margin-left: auto;
+    margin-right: auto;
     border: 1px solid #eee;
     padding: 2.5em 1.8em;
-    //min-height: 85vh;
     overflow: hidden;
     color: #3c3c3c;
     background: #fff;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-
-    img {
-        max-width: 100%;
-    }
 
     h3 {
         font-size: 1.6em;
@@ -118,149 +147,64 @@ i {
         padding-top: 5px;
         font-weight: 300;
     }
+}
 
-    .range-visual-images {
-        text-align: center;
-        background: #e3deec;
-        margin: 1.5em 0em;
-        padding: 1em;
-        border-radius: 20px;
 
-        img {
-            width: 50%;
-        }
+.range-visual-images {
+    text-align: center;
+    background: #e3deec;
+    margin: 1.5em 0em;
+    padding: 1em;
+    border-radius: 20px;
+
+    img {
+        width: 50%;
     }
+}
 
-    .range-vlaues {
-        margin-top: 2em;
-        //display: flex;
-        font-weight: 700;
+.range-vlaues {
+    margin-top: 2em;
+    font-weight: 700;
+    text-align: center;
+
+    .values {
+        max-width: 62%;
+        display: inline-block;
         text-align: center;
 
-        .values {
-            max-width: 62%;
+        .currency {
             display: inline-block;
-            text-align: center;
+            vertical-align: middle;
+            line-height: 33px;
+            font-size: 18px;
+            //margin-left: -8px;
+        }
 
-            .currency {
-                display: inline-block;
-                vertical-align: middle;
-                line-height: 33px;
-                font-size: 18px;
-                //margin-left: -8px;
-            }
+        .value-vertical-slider {
+            display: inline-block;
+            line-height: 33px;
+            height: 33px;
+            overflow: hidden;
+            vertical-align: middle;
+            font-size: 2em;
+            font-weight: 900;
 
-            .value-vertical-slider {
-                display: inline-block;
-                line-height: 33px;
-                height: 33px;
-                overflow: hidden;
-                vertical-align: middle;
-                font-size: 2em;
-                font-weight: 900;
+            ul {
+                transition: 0.5s;
 
-                ul {
-                    transition: 0.5s;
-
-                    li {
-                        text-align: right;
-                    }
+                li {
+                    text-align: right;
                 }
             }
         }
-
-        .select-option {
-            width: 38%;
-            display: inline-block;
-            margin-left: 5px;
-            text-align: left;
-
-        }
     }
 
-    .range-slider {
-        margin-top: 20px;
-        width: 100%;
-        position: relative;
+    .select-option {
+        width: 38%;
+        display: inline-block;
+        margin-left: 5px;
+        text-align: left;
 
-        .indicator {
-            width: 25px;
-            height: 25px;
-            background: #807bcf;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            position: absolute;
-            left: 30%;
-            top: 0;
-            transform: translate(-8px, -8px);
-            z-index: 1;
-            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
-        }
-
-        .range-bar {
-            position: relative;
-            width: 100%;
-            height: 10px;
-            background: #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-
-            &--progress {
-                width: 30%;
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 10px;
-                background: #b991ff;
-            }
-        }
-    }
-}
-
-@keyframes fadeUp {
-    0% {
-        transform: translateY(10px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-}
-
-.irs--flat .irs-handle,
-.irs--flat .irs-min,
-.irs--flat .irs-max {
-    display: none;
-}
-
-.irs--flat .irs-bar {
-    background: #4e4d61;
-    transition: 0.3s;
-}
-
-.irs-single {
-    width: 25px;
-    height: 25px;
-    background: #6cd7d2 !important;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    position: absolute;
-    left: 30%;
-    top: 0;
-    transform: translateY(-8px);
-    z-index: 1;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
-    top: 20px;
-    z-index: 21;
-    border-radius: 50% !important;
-    text-align: center;
-    line-height: 25px !important;
-    top: 26px;
-    font-size: 0 !important;
-    transition: 0.3s;
-
-    &::before {
-        display: none !important;
     }
 }
 
@@ -296,7 +240,7 @@ i {
     }
 }
 
-#apply {
+.btn {
     background: #ffd651;
     color: #fff;
     border: none;
@@ -312,8 +256,6 @@ i {
     text-transform: uppercase;
 }
 
-
-/////////////////////CUSTOM 
 .top-slide-wrap {
     position: relative;
     width: 100%;
@@ -324,9 +266,7 @@ i {
     height: 165px;
     overflow: hidden;
 
-
     .slide-item {
-
         .flex-wrap {
             display: flex;
             justify-content: space-between;
@@ -365,38 +305,8 @@ i {
         opacity: 0.8;
     }
 
-
     #circle-back {
         opacity: 0.5;
-    }
-
-    .bullets {
-        font-size: 12px;
-
-        li {
-            position: relative;
-            padding-left: 10px;
-
-            &::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 5px;
-                width: 4px;
-                height: 4px;
-                background: #ffd651;
-                border-radius: 50%;
-
-            }
-
-            &:not(:first-child) {
-                margin-top: 5px
-            }
-
-            &.invest::before {
-                background: rgba($color: #fff, $alpha: 0.5)
-            }
-        }
     }
 }
 
@@ -421,7 +331,6 @@ i {
 
 .notifications {
     margin-top: 20px;
-
 
     .card {
         background: #e7e7e7;
@@ -536,9 +445,8 @@ i {
     }
 }
 
+//interest calculator 
 .calculate {
-    
-
     h4 {
         margin-top: 20px;
         padding-bottom: 10px;
@@ -559,15 +467,13 @@ i {
     }
 }
 
-//NOUI
+//range slider plugin custom
 .noUi-target {
-    //height: 12px;
     height: auto;
     margin-top: 20px;
     border: none;
     box-shadow: none;
     background: transparent;
-
 }
 
 .noUi-connect {
@@ -576,7 +482,6 @@ i {
 }
 
 .noUi-connects {
-    //top: 25px;
     height: 12px;
     background-color: #dee5eb;
     border-radius: 4px;
@@ -631,7 +536,6 @@ i {
 }
 
 .calculate {
-
     .noUi-target {
         margin-top: 10px;
     }
@@ -647,6 +551,8 @@ i {
         padding: 20px;
         border-radius: 10px;
         text-align: center;
+        margin-top: 30px;
+
 
         .rate--reg,
         .rate--club {
@@ -672,7 +578,7 @@ i {
     }
 
     .calc-result {
-       // display: flex;
+        // display: flex;
         //flex-wrap: wrap;
         justify-content: space-between;
         font-size: 2em;
@@ -683,39 +589,169 @@ i {
         letter-spacing: -0.04em;
         padding-right: 10px;
 
-        > p { margin-top: 10px;}
+        >p {
+            margin-top: 10px;
+        }
+
         strong {
             //display: block;
             font-size: 0.4em;
             color: #999;
             letter-spacing: 0;
             text-transform: uppercase;
-            padding-right: 10px;
+            padding-right: 5px;
         }
-        em{
-            font-style: normal;
-        }
-        span{
-             font-size: 20px;
+
+        span {
+            font-size: 20px;
+            color: #999
         }
     }
 }
 
-.rate-info {
-    margin-top: 40px;
-}
-
 #depositDayRangeSlider {
-    .noUi-marker-normal{ display: none;}
+    .noUi-marker-normal {
+        display: none;
+    }
 }
 
-#depositRangeInput { 
+#depositRangeInput {
     margin-top: 10px;
-    border: none; ;
+    border: none;
     font-size: 1em;
     text-align: right;
     width: 100%;
     padding-right: 5px;
     font-weight: 700;
-    color:#333; 
+    color: #333;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    line-height: 30px;
+    height: 30px;
+}
+
+.morgage {
+    .chart {
+        background-color: #4e4d61;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+
+        .bullets {
+            margin-top: 10px;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            li {
+                color: #fff;
+                text-align: left;
+                margin-top: 0;
+
+                &.others {
+                    &::before {
+                        background: #2f2e3e
+                    }
+                }
+            }
+        }
+
+        >svg {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #circle-back {
+            opacity: 0.1;
+        }
+    }
+
+    .info {
+        margin-top: 25px;
+
+        li {
+
+            font-size: 0.85em;
+            margin-top: 10px;
+            padding-left: 10px;
+            position: relative;
+            line-height: 1.5;
+
+            &::before {
+                content: '';
+                width: 5px;
+                height: 1px;
+                background: #222;
+                position: absolute;
+                top: 7px;
+                left: 0;
+            }
+        }
+    }
+}
+
+//custom radiobox(check)
+.check-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px auto;
+
+    >label {
+        position: relative;
+        width: 23%;
+        height: 30px;
+        cursor: pointer;
+
+        span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 10px;
+            width: 100%;
+            display: block;
+            background-color: #beb9c5;
+            color: #222;
+            text-align: center;
+            transition: 0.3s;
+            font-weight: 400;
+        }
+
+        input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+
+            &:checked {
+                &~span {
+                    background-color: #4e4d61;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.link {
+    text-decoration: none;
+    color: #807bcf;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 2px 7px;
+    display: inline-block;
+    vertical-align: middle;
+    background: #e3deec;
+    border-radius: 5px;
+    transition: 0.3s;
+
+    &:hover {
+        background: #807bcf;
+        color: #e3deec
+    }
 }
