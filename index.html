@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/nouislider.css">
+    <link rel="stylesheet" href="css/range.css">
+    <title>range interaction</title>
+
+</head>
+
+<body>
+
+
+    <div class="figure normal-range">
+        <h3>Recurring Transfers</h3>
+        <p>Regularly set aside money in your Stash banking account to invest, save, or spend. </p>
+
+        <div class="range-visual-images">
+            <p><img src="images/payment.png" alt="slack"></p>
+        </div>
+
+        <div class="range-vlaues">
+            <div class="values">
+                <div class="value-vertical-slider">
+                    <ul>
+                    </ul>
+                </div>
+                <i class="currency">%</i>
+            </div>
+            <div class="select-option custom-select">
+                <select>
+                    <option value="0_default">Weekly</option>
+                    <option value="1">Weekly</option>
+                    <option value="2">Monthly</option>
+                    <option value="3">Yearly</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="rangeSlider"></div>
+        <!-- <input type="text" id="rangeSlider" name="rangeSlider" value="" /> -->
+
+        <div class="inputarea">
+            <p> try edit this field</p>
+            <input type="text" id="example_1_input" value="30">
+        </div>
+
+        <button id="apply">Apply Now</button>
+
+
+    </div>
+
+    <div class="figure custom-type1">
+        <div class="top-slide-wrap">
+            <div class="slide-item">
+                <div class="flex-wrap">
+                    <div class="text">
+                        <h3>Total Automotions</h3>
+                        <p class="amount">$ 351.89 <i class="info">i</i></p>
+                        <p class="subtxt">scheduled this month</p>
+                    </div>
+
+                    <div class="chart">
+                        <svg width="100" height="100">
+                            <circle id="circle-back" cx="50" cy="50" r="35" stroke="#fff" stroke-width="12"
+                                fill="transparent"></circle>
+                            <circle id="circle-front" cx="50" cy="50" r="35" stroke="#f5ea72" stroke-width="12"
+                                fill="transparent" stroke-linecap="round" stroke-dasharray="144" ;></circle>
+                        </svg>
+                    </div>
+
+                </div>
+                <ul class="bullets">
+                    <li class="deposit">Deposits</li>
+                    <li class="invest">Investments</li>
+                </ul>
+            </div>
+        </div>
+        <div class="slide-pagination">
+            <a href="#">1</a>
+            <a href="#" class="active">2</a>
+            <a href="#">3</a>
+        </div>
+
+        <div class="notifications">
+            <div class="card">
+                <p>Your direct deposit of $200 will arrive in 2 days!</p>
+            </div>
+        </div>
+
+
+        <div class="toggle-list">
+            <div class="list">
+                <p>Recurring Transfers</p>
+                <small>$45 weekly</small>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="list">
+                <p>Recurring investments</p>
+                <small>$120 monthly</small>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+
+        <button id="apply">Next</button>
+    </div>
+
+    <div class="figure calculate">
+        <h3>Interest Calculator</h3>
+        <p>How much interest will you Earn?</p>
+
+        <h4>Deposit Amount</h4>
+
+        <input type="text" id="depositRangeInput" title="amount" value="5,000,000">
+        <div id="depositRangeSlider"></div>
+
+        <h4>NO. OF DAYS        </h4>
+        <div id="depositDayRangeSlider"></div>
+
+        <div class="rate-info">
+            <div class="rate--reg">
+                0.0375 <i>%</i>
+                <p>Regular Rate</p>
+            </div>
+            <div class="rate--club">
+                0.0525 <i>%</i>
+                <p>Club Rate</p>
+            </div>
+        </div>
+        <button id="apply" class="btn-calc">CALCULATE</button>
+        <div class="calc-result">
+            <p class="result--reg"><strong>Net Interest</strong> 
+                <em class="r">1,234,567</em>    
+            <span>$</span></p>
+            <p class="result--club"><strong>Total Savings</strong>
+                <em class="r">4,567,8900</em>    
+            <span>$</span></p>
+        </div>
+    </div>
+
+    <script src="js/selectbox.js"></script>
+    <script src="js/nouislider.js"></script>
+    <script src="js/range.js"></script>
+
+</body>
+</html>
+
